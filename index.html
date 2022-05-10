@@ -65,11 +65,11 @@
                     <label for="search">
                         <i class="fas fa-search"></i>
                     </label>
-                    <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" id="search" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup="filterChat">
                 </div>
             </div>
             <div class="chats">
-                <section class="chat" v-for="(contact, index) in contacts" :class="{ active: actIndex === index }">
+                <section class="chat" v-for="(contact, index) in contacts" :class="{ active: actIndex === index }" v-if="contact.visible" @click="actIndex=index">
                     <div>
                         <div class="circ-box">
                             <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="contacts[actIndex].name"> 

@@ -89,7 +89,7 @@ const app = new Vue({
                 ],
             },
             {
-                name: 'Alessandro L.',
+                name: 'Alessandra L.',
                 avatar: '_5',
                 visible: true,
                 messages: [
@@ -175,9 +175,31 @@ const app = new Vue({
             message: []
         },
         // index della chat attiva 
-        actIndex: 0
+        actIndex: 0,
+        search: "",
         
     }),
+    methods: {
+        filterChat: function () {
+            
+            // Scorro l'array di chats
+            // Per ogni elmento
+            // se il name contiene il search,
+            // visible diventa true
+            // altrimenti
+            //visible diventa false
+            this.contacts.forEach((item) => {
+              const formattedText = item.name.toLowerCase();
+              const formattedSearch = this.search.toLowerCase();
+              if (formattedText.includes(formattedSearch)) {
+                item.visible = true;
+              } else {
+                item.visible = false;
+              }
+            });
+          },
+        
+    },
 
 
 
