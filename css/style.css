@@ -11,10 +11,14 @@ img {
     width: 100%;
     border-radius: inherit;
 }
-.img-box {
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
+.circ-box {
+    height: 2.6rem;
+    width: 2.6rem;
+    border-radius: 100%;
+    background-color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.6rem;
 
 
 
@@ -25,7 +29,7 @@ body {
 #root {
     background-color: #eaeaea;
     margin: 5vh auto;
-    width: 75%;
+    width: 90%;
     height: 90vh;
     display: flex;
 }
@@ -38,33 +42,93 @@ body {
     width: 70%;
     height: 100%;
 }
+
 /* parte sopra delle due colonne */
 /* il bgc è lo stesso di #root  */
-.header {
+.header, .chat {
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem;
-    height: 10%;
-    background-color: red;
+    padding: 0.7rem;
+    
 
 
 }
-.header>div {
+.header {
+    height: 10%;
+}
+.header>div, .bell, .search-form, .chat>div{
     display: flex;
     align-items: center;
 }
-.header>div>div {
+.header>div>div, .bell>div {
     margin-right: 1rem;
 
 }
 .settings i {
     color: #b1b1b1;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     cursor: pointer;
 }
 .settings div:hover i {
     color: #009687;
-
+}
+.lastMessage, .actNotif {
+    color: #b1b1b1;
+    font-size: 0.9rem;
+}
+.actNotif {
+    text-decoration: underline;
+}
+/* colonna di sinistra */
+/* notifica celeste  */
+.bell {
+    height: 13%;
+    background-color: #8edafc;
+    padding: 1.4rem;
+}
+.bell i {
+    color: #8edafc;
+}
+/* Form cerca chat */
+.search-form {
+    height: 7%;
+    padding: 0 2rem;
+    background-color: #fafafa;
+    
+}
+.search-form div {
+    width: 100%;    
+    display: flex;
+}
+.search-form label {
+    width: 3rem;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: white;
+    text-align: center;
+    margin-right: 1px;
+}
+.search-form input {
+    flex-grow: 1;
+    height: 2rem;
+    font-size: 1.1rem;
+    padding: 0 0.3rem;
+}
+.search-form input, .search-form input:focus {
+    outline: none;
+    border: none;
+}
+.chats {
+    overflow-y: scroll;
+    max-height: 70%;
+}
+.chat {
+    background-color: white;
+    cursor: pointer;
+    height: 5rem;
+}
+.active, .chat:hover {
+    background-color: #e9ebeb;
 }

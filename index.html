@@ -13,7 +13,7 @@
     <!-- Fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@500&display=swap" rel="stylesheet">
     <!-- Fontsawesome  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -28,7 +28,7 @@
             <!-- Parte di sopra della colonna di sinistra  -->
             <div class="header">
                 <div>
-                    <div class="img-box">
+                    <div class="circ-box">
                         <img :src="'img/avatar' + io.avatar + '.jpg'" :alt="io.name"> 
                     </div>
                     <div>
@@ -45,9 +45,46 @@
                     <div>
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
-
-                    
                 </div>
+            </div>
+            <div class="bell">
+                <div class="circ-box">
+                    <i class="fas fa-bell-slash"></i>
+                </div>
+                <div>
+                    <p>
+                        Ricevi notifiche di nuovi messaggi
+                    </p>
+                    <p class="actNotif">
+                        Attiva notifiche desktop
+                    </p>
+                </div>
+            </div>
+            <div class="search-form">
+                <div>
+                    <label for="search">
+                        <i class="fas fa-search"></i>
+                    </label>
+                    <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                </div>
+            </div>
+            <div class="chats">
+                <section class="chat" v-for="(contact, index) in contacts" :class="{ active: actIndex === index }">
+                    <div>
+                        <div class="circ-box">
+                            <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="contacts[actIndex].name"> 
+                        </div>
+                        <div>
+                            <p>
+                                {{ contact.name }}
+                            </p>
+                            <p class="lastMessage">
+                                {{ contact.messages[contact.messages.length - 1].message}}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
             </div>
             
             
@@ -56,6 +93,30 @@
         <div class="right-col">
             <!-- Parte di sopra della colonna di destra  -->
             <div class="header">
+                <div>
+                    <div class="circ-box">
+                        <img :src="'img/avatar' + contacts[actIndex].avatar + '.jpg'" :alt="contacts[actIndex].name"> 
+                    </div>
+                    <div>
+                        <p>
+                            {{ contacts[actIndex].name }}
+                        </p>
+                        <p class="lastMessage">
+                            Ultimo accesso oggi alle 12:00
+                        </p>
+                    </div>
+                </div>
+                <div class="settings">
+                    <div>
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-paperclip"></i>
+                    </div>
+                    <div>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
 
             </div>
         </div>
