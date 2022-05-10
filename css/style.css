@@ -4,3 +4,67 @@
     margin: 0;
     box-sizing: border-box;
 }
+html {
+    font-family: 'Lato', sans-serif;;
+}
+img {
+    width: 100%;
+    border-radius: inherit;
+}
+.img-box {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+
+
+
+}
+body {
+    background-color: #009687;
+}
+#root {
+    background-color: #eaeaea;
+    margin: 5vh auto;
+    width: 75%;
+    height: 90vh;
+    display: flex;
+}
+.left-col {
+    width: 30%;
+    height: 100%;
+    border-right: 1px solid #b1b1b1;
+}
+.right-col {
+    width: 70%;
+    height: 100%;
+}
+/* parte sopra delle due colonne */
+/* il bgc è lo stesso di #root  */
+.header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    height: 10%;
+    background-color: red;
+
+
+}
+.header>div {
+    display: flex;
+    align-items: center;
+}
+.header>div>div {
+    margin-right: 1rem;
+
+}
+.settings i {
+    color: #b1b1b1;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.settings div:hover i {
+    color: #009687;
+
+}
