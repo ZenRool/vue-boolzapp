@@ -11,7 +11,7 @@ const app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: '10/01/2020 04:30:55',
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
                     },
@@ -170,7 +170,7 @@ const app = new Vue({
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:51:00',
+                        date: '10/01/2020 16:01:00',
                         message: 'OK!!',
                         status: 'received'
                     }
@@ -218,7 +218,11 @@ const app = new Vue({
 
 
             const time = new Date(newString.replaceAll("/","-"));
-            return time.getHours() + ":" + time.getMinutes();
+            let hour = time.getHours();
+            hour = hour > 9 ? hour : `0${hour}`;
+            let minutes = time.getMinutes();
+            minutes = minutes > 9 ? minutes : `0${minutes}`;
+            return hour + ":" + minutes;
 
         },
         // trasformo da data di adesso a stringa data 
@@ -249,10 +253,19 @@ const app = new Vue({
                 {
                     date: this.strDate(),
                     message: input,
-                    status: 'received'
+                    status: 'sent'
                 });
             // Resetto l'input
             this.inputMessage = "";
+            setTimeout( () => {
+                this.contacts[this.actIndex].messages.push(
+                    {
+                        date: this.strDate(),
+                        message: "Ok",
+                        status: 'received'
+                    });
+                }
+                ,1000)
 
         }  
 
