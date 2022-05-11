@@ -83,6 +83,9 @@
                             </p>
                         </div>
                     </div>
+                    <p class="date-last">
+                        {{ contact.messages[contact.messages.length - 1].date}}
+                    </p>
                 </section>
 
             </div>
@@ -116,6 +119,18 @@
                     <div>
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
+                </div>
+
+            </div>
+            <div class="dialog">
+                <div v-for="(message, index) in contacts[actIndex].messages" class="balloon" :class="[(index === 0 ? 'first-m' : (message.status === contacts[actIndex].messages[index-1].status ? '' : 'first-m') ),( message.status )]"> 
+                    <!-- se è il primo messaggio di una serie mette l'angoletto  -->
+                    {{message.message}}
+
+                </div>
+                <!-- resetta il primo messaggio  -->
+                <div style="display: none;">
+                    {{firstMessage = 0}}
                 </div>
 
             </div>

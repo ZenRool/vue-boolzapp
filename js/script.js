@@ -177,10 +177,12 @@ const app = new Vue({
         // index della chat attiva 
         actIndex: 0,
         search: "",
+        firstMessage: 0,
+        
         
     }),
     methods: {
-        filterChat: function () {
+        filterChat: function() {
             
             // Scorro l'array di chats
             // Per ogni elmento
@@ -189,19 +191,45 @@ const app = new Vue({
             // altrimenti
             //visible diventa false
             this.contacts.forEach((item) => {
-              const formattedText = item.name.toLowerCase();
-              const formattedSearch = this.search.toLowerCase();
-              if (formattedText.includes(formattedSearch)) {
-                item.visible = true;
-              } else {
-                item.visible = false;
-              }
+                const formattedText = item.name.toLowerCase();
+                const formattedSearch = this.search.toLowerCase();
+                if (formattedText.includes(formattedSearch)) {
+                    item.visible = true;
+                } else {
+                    item.visible = false;
+                }
             });
-          },
+        },
+        // funzione che controlla se il messaggio è il primo di una serie 
+        // isFirst: function(mes) {
+
+        //     console.log(typeof mes.status);
+        //     const appoggio = this.firstMessage;
+           
+        //     if(mes.status === "sent") {
+                
+        //         if(appoggio !== 1) {
+                   
+
+        //             return true;
+        //         }   
+        //         return false;
+
+        //     } 
+        //     else {
+
+        //         if(appoggio !== -1) {
+
+        //             this.firstMessage = -1;
+        //             console.log(typeof this.firstMessage);
+        //             return true;
+        //         } 
+
+        //     }
         
+            
+        //     return false;
+        // },
     },
-
-
-
 
 });
