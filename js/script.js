@@ -187,7 +187,8 @@ const app = new Vue({
         // index della chat attiva 
         actIndex: 0,
         search: "",
-        firstMessage: 0,
+        inputMessage: "",
+        firstMessage: 0
         
         
     }),
@@ -210,45 +211,52 @@ const app = new Vue({
                 }
             });
         },
-        // funzione che controlla se il messaggio è il primo di una serie 
-        // isFirst: function(mes) {
-
-        //     console.log(typeof mes.status);
-        //     const appoggio = this.firstMessage;
-           
-        //     if(mes.status === "sent") {
-                
-        //         if(appoggio !== 1) {
-                   
-
-        //             return true;
-        //         }   
-        //         return false;
-
-        //     } 
-        //     else {
-
-        //         if(appoggio !== -1) {
-
-        //             this.firstMessage = -1;
-        //             console.log(typeof this.firstMessage);
-        //             return true;
-        //         } 
-
-        //     }
-        
-            
-        //     return false;
-        // },
+        // trasformo una stringa data in una data formato americano
         transformDate: str => {
-            // const day = str.substr(0, 2);
+            
             const newString = str.slice( 3 , 6 ) +  str.slice(0,3)  + str.slice(6);
 
 
             const time = new Date(newString.replaceAll("/","-"));
             return time.getHours() + ":" + time.getMinutes();
 
-        }
+        },
+        // trasformo da data di adesso a stringa data 
+        strDate: () => {
+            const date = new Date();
+            // se sono minori di 10 aggiungo uno 0 davanti
+            let day = date.getDate();
+            day = day > 9 ? day : `0${day}`;
+            let mounth = date.getMonth();
+            mounth = mounth > 9 ? mounth : `0${mounth}`;
+            let hour = date.getHours();
+            hour = hour > 9 ? hour : `0${hour}`;
+            let minutes = date.getMinutes();
+            minutes = minutes > 9 ? minutes : `0${minutes}`;
+            let seconds = date.getSeconds();
+            seconds = seconds > 9 ? seconds : `0${seconds}`;
+            // ritorno la stringa 
+            return(`${day}/${mounth}/${date.getFullYear()} ${hour}:${minutes}:${seconds}`);
+            // 
+            
+            
+        },
+        // aggiunge al array messages il messaggio scritto 
+        addMessage: function() {
+            const input = this.inputMessage.trim();
+            // Aggiungo l'input al array
+            this.contacts[this.actIndex].messages.push(
+                {
+                    date: this.strDate(),
+                    message: input,
+                    status: 'received'
+                });
+            // Resetto l'input
+            this.inputMessage = "";
+
+        }  
+
+
     },
 
 

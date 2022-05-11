@@ -51,7 +51,7 @@ body {
 
 /* parte sopra delle due colonne */
 /* il bgc è lo stesso di #root  */
-.header, .chat {
+.header, .chat, footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,6 +60,7 @@ body {
 }
 .header {
     height: 8%;
+    min-height: 4rem;
 }
 .header>div, .bell, .search-form, .chat>div{
     display: flex;
@@ -74,7 +75,7 @@ body {
     font-size: 1.2rem;
     cursor: pointer;
 }
-.settings div:hover i {
+.settings i:hover {
     color: #009687;
 }
 .lastMessage, .actNotif {
@@ -228,5 +229,26 @@ body {
     align-items: flex-end;
     top: 7px;
     left: 7px;  
-    
+}
+footer {
+    height: 12%;
+    background-color: #f3eeea;
+    min-height: 4.3rem;
+    width: 100%;
+}
+footer .settings {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.form-message {
+    flex-grow: 1;
+}
+.form-message input {
+    width: 100%;
+    height: 4rem;
+    font-size: 1.2rem;
+    padding-left: 0.7rem;
 }
