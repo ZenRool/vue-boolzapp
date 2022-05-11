@@ -4,6 +4,12 @@
     margin: 0;
     box-sizing: border-box;
 }
+/* Clearfix -mannaggia al demonio mannaggia, e io che me pensavo de fa tutto co' flex */
+.clarfix::after {
+    clear: both;
+    display: table;
+    content: "";
+}
 html {
     font-family: 'Lato', sans-serif;;
 }
@@ -74,6 +80,7 @@ body {
 .lastMessage, .actNotif {
     color: #b1b1b1;
     font-size: 0.9rem;
+
 }
 .actNotif {
     text-decoration: underline;
@@ -136,6 +143,7 @@ body {
     align-self: flex-start;
     color: #b1b1b1;
 }
+
 /* Fine colonna sinistra  */
 /* Colonna destra  */
 .dialog {
@@ -150,11 +158,14 @@ body {
 .balloon {
     border-radius: 0.4rem;
     padding: 0.5rem 1rem;
-    margin: 5px 0;
+    margin: 2px 0;
     width: auto;
-    max-width: 70%;
+    max-width: 65%;
+    
+
     position: relative;
-    display: flex;
+    /* display: flex; */
+
     
 
 }
@@ -198,5 +209,24 @@ body {
     border-style: solid;
     border-width: 10px 10px 0 0;
     border-color: #d5f9ba transparent transparent transparent ;
+    
+}
+.balloon .message {
+    /* margin-right: 3rem; */
+    /* float: left; */
+    /* width: 80%; */
+    height: 100%;
+
+    
+
+}
+.balloon .date-last {
+    margin-left: 3rem;
+    float: right;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    top: 7px;
+    left: 7px;  
     
 }

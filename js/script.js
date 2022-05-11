@@ -124,6 +124,16 @@ const app = new Vue({
                         date: '10/01/2020 15:51:00',
                         message: 'Nessuna nuova, buona nuova',
                         status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:51:00',
+                        message: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, error quibusdam. Dicta sint sed neque doloremque rem eligendi nam voluptates harum cupiditate tempora cumque distinctio ad numquam velit, atque repellendus.',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:51:00',
+                        message: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, error quibusdam. Dicta sint sed neque doloremque rem eligendi nam voluptates harum cupiditate tempora cumque distinctio ad numquam velit, atque repellendus.',
+                        status: 'received'
                     }
                 ],
             },
@@ -230,6 +240,16 @@ const app = new Vue({
             
         //     return false;
         // },
+        transformDate: str => {
+            // const day = str.substr(0, 2);
+            const newString = str.slice( 3 , 6 ) +  str.slice(0,3)  + str.slice(6);
+
+
+            const time = new Date(newString.replaceAll("/","-"));
+            return time.getHours() + ":" + time.getMinutes();
+
+        }
     },
+
 
 });
