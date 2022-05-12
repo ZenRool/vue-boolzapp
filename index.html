@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="chats">
-                <section class="chat" v-for="(contact, index) in contacts" :class="{ active: actIndex === index }" v-if="contact.visible" @click="actIndex=index">
+                <section class="chat" v-for="(contact, index) in contacts" :class="{ active: actIndex === index }" v-if="contact.visible" @click="changeChat(index)">
                     <div>
                         <div class="circ-box">
                             <img :src="'img/avatar' + contact.avatar + '.jpg'" :alt="contacts[actIndex].name"> 
@@ -138,13 +138,12 @@
                         </p>
                     </div>
                     <div class="none chevron" >
-                        <i class="fas fa-chevron-down" @click="removeMessage(index)"></i>
-                        <ul class="none">
-                            <li>Cancella messaggio</li>
-                        </ul>
-
+                        <i class="fas fa-chevron-down" @click="activeMenu(index)"></i>                        
                     </div>
-
+                    <ul v-if="index === delMessage">
+                        <li @click="removeMessage(index)">Cancella messaggio</li>
+                    </ul>
+                    
                     
 
                 </div>
@@ -160,12 +159,12 @@
             </div>
             <footer>
                 <div class="settings">
+                    <!-- Smiles selection  -->
                     <div class="smiles">
                         <div @click="inputMessage += '😊'">
                             <i class="far fa-smile"></i>
                         </div>
                         <div class="none">
-                            
                             <div @click="inputMessage += '😊'">
                                 <i class="far fa-smile"></i>
                             </div>
@@ -177,11 +176,7 @@
                             </div>
                             <div @click="inputMessage += '👍'">
                                 <i class="far fa-thumbs-up"></i>
-                            </div>
-
-                       
-                            
-
+                            </div>    
                         </div>
 
                     </div>

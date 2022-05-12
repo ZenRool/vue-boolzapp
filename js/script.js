@@ -13,7 +13,7 @@ const app = new Vue({
                     {
                         date: '10/01/2020 04:30:55',
                         message: 'Hai portato a spasso il cane?',
-                        status: 'sent'
+                        status: 'sent',
                     },
                     {
                         date: '10/01/2020 15:50:00',
@@ -202,7 +202,10 @@ const app = new Vue({
         search: "",
         inputMessage: "",
         firstMessage: 0,
-        intUno: 1
+        
+
+        delMessage: -1,
+
         
         
     }),
@@ -224,6 +227,11 @@ const app = new Vue({
                     item.visible = false;
                 }
             });
+        },
+        changeChat(index) {
+            this.actIndex = index;
+            this.delMessage = -1; 
+
         },
         // trasformo una stringa data in una data formato americano
         transformDate: str => {
@@ -283,9 +291,19 @@ const app = new Vue({
             }
 
         },
-        removeMessage(index) {
+        // Funzine che attiva il menu a tendina 
+        activeMenu(index) {
             
+            this.delMessage = index;
+            
+
+
+        },
+
+        removeMessage(index) {
             this.contacts[this.actIndex].messages.splice(index, 1);
+            this.delMessage = -1;
+
         }  
 
 
