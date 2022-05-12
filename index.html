@@ -128,7 +128,7 @@
             </div>
             <div class="dialog" v-if="contacts[actIndex].messages.length !== 0">
                 
-                <div v-for="(message, index) in contacts[actIndex].messages" class="balloon  clearfix" :class="[(index === 0 ? 'first-m' : (message.status === contacts[actIndex].messages[index-1].status ? '' : 'first-m') ),( message.status )]"> 
+                <div v-for="(message, index) in contacts[actIndex].messages" class="balloon  clearfix" :class="[(index === 0 ? 'first-m' : (message.status === contacts[actIndex].messages[index-1].status ? '' : 'first-m') ),( message.status )]" > 
                     <!-- se è il primo messaggio di una serie mette l'angoletto  -->
 
                     <div class="message clearfix">
@@ -137,13 +137,18 @@
                             {{ transformDate(message.date) }}
                         </p>
                     </div>
-                    <div class="none chevron" >
-                        <i class="fas fa-chevron-down" @click="activeMenu(index)"></i>                        
+                    <div  @click.stop="activeMenu(index)" >
+                        <div class="none chevron" >
+                            <i class="fas fa-chevron-down"></i>                        
+                        </div>
+                        <div v-if="index === delMessage" v-click-outside.stop="resetDel" >
+                            <ul>
+                                <li @click="removeMessage(index)">Cancella messaggio</li>
+                            </ul>
+    
+                        </div>
                     </div>
-                    <ul v-if="index === delMessage">
-                        <li @click="removeMessage(index)">Cancella messaggio</li>
-                    </ul>
-                    
+                        
                     
 
                 </div>

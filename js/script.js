@@ -205,6 +205,7 @@ const app = new Vue({
         
 
         delMessage: -1,
+        firstClick: 0
 
         
         
@@ -293,8 +294,21 @@ const app = new Vue({
         },
         // Funzine che attiva il menu a tendina 
         activeMenu(index) {
+            // event.capture= true;
+            // event.stopPropagation();
+            
+            // this.delMessage = index;
+
+            
+            // setTimeout(() =>{console.log(index,"a");}, 200);
+            
             
             this.delMessage = index;
+            // this.dontUndo = event;
+            // console.log(this.dontUndo === event);
+            // event.cancelable;
+            // console.log(event);
+            
             
 
 
@@ -303,11 +317,50 @@ const app = new Vue({
         removeMessage(index) {
             this.contacts[this.actIndex].messages.splice(index, 1);
             this.delMessage = -1;
+            this.firstClick = 0;
 
         },
+        resetDel() {
+            this.delMessage = -1;
+            // console.log("hallo");
+        }
 
 
     },
+    // non ho idea di cosa faccia tutta 'sta roba ma funziona quindi la lascio
+    // Commento serio serve per far funzionare il v-click-outside evitando ricorsioni strani con il click
+    directives: {
+        'click-outside': {
+          bind: function(el, binding, vNode) {
+            // Provided expression must evaluate to a function.
+            if (typeof binding.value !== 'function') {
+                const compName = vNode.context.name
+              let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`
+              if (compName) { warn += `Found in component '${compName}'` }
+              
+              console.warn(warn)
+            }
+            // Define Handler and cache it on the element
+            const bubble = binding.modifiers.bubble
+            const handler = (e) => {
+              if (bubble || (!el.contains(e.target) && el !== e.target)) {
+                  binding.value(e)
+              }
+            }
+            el.__vueClickOutside__ = handler
+    
+            // add Event Listeners
+            document.addEventListener('click', handler)
+                },
+          
+          unbind: function(el, binding) {
+            // Remove Event Listeners
+            document.removeEventListener('click', el.__vueClickOutside__)
+            el.__vueClickOutside__ = null
+    
+          }
+        }
+      }
 
 
 });
