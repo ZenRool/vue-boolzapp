@@ -248,24 +248,25 @@ const app = new Vue({
         // aggiunge al array messages il messaggio scritto 
         addMessage: function() {
             const input = this.inputMessage.trim();
-            // Aggiungo l'input al array
-            this.contacts[this.actIndex].messages.push(
-                {
-                    date: this.strDate(),
-                    message: input,
-                    status: 'sent'
-                });
-            // Resetto l'input
-            this.inputMessage = "";
-            setTimeout( () => {
+            if (input.length > 0) {
                 this.contacts[this.actIndex].messages.push(
                     {
                         date: this.strDate(),
-                        message: "Ok",
-                        status: 'received'
+                        message: input,
+                        status: 'sent'
                     });
-                }
-                ,1000)
+                // Resetto l'input
+                this.inputMessage = "";
+                setTimeout( () => {
+                    this.contacts[this.actIndex].messages.push(
+                        {
+                            date: this.strDate(),
+                            message: "Ok",
+                            status: 'received'
+                        });
+                    }
+                    ,1000);
+            }
 
         }  
 
