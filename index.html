@@ -182,7 +182,7 @@
                     </div>
                 </div>
                 <div class="form-message">
-                    <input type="text" placeholder="Scrivi un messaggio" v-model="inputMessage" @keyup.enter="addMessage">
+                    <input type="text" placeholder="Scrivi un messaggio" v-model="inputMessage" @keyup="delMessage = -1" @keyup.enter="addMessage">
                 </div>
                 <div class="settings">
                     <div>

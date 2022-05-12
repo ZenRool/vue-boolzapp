@@ -304,7 +304,7 @@ const app = new Vue({
             this.contacts[this.actIndex].messages.splice(index, 1);
             this.delMessage = -1;
 
-        }  
+        },
 
 
     },
