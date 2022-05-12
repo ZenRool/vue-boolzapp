@@ -78,14 +78,15 @@
                             <p>
                                 {{ contact.name }}
                             </p>
-                            <p class="lastMessage">
+                            <p v-if="contact.messages.length" class="lastMessage">
 
                                 {{contact.messages[contact.messages.length - 1].message.length > 40 ? contact.messages[contact.messages.length - 1].message.slice(0, 40) + "..." : contact.messages[contact.messages.length - 1].message}}
 
                             </p>
+                        
                         </div>
                     </div>
-                    <p class="date-last">
+                    <p class="date-last" v-if="contact.messages.length">
                         {{ transformDate(contact.messages[contact.messages.length - 1].date) }}
                         
                     </p>
@@ -125,7 +126,8 @@
                 </div>
 
             </div>
-            <div class="dialog">
+            <div class="dialog" v-if="contacts[actIndex].messages.length !== 0">
+                
                 <div v-for="(message, index) in contacts[actIndex].messages" class="balloon  clearfix" :class="[(index === 0 ? 'first-m' : (message.status === contacts[actIndex].messages[index-1].status ? '' : 'first-m') ),( message.status )]"> 
                     <!-- se è il primo messaggio di una serie mette l'angoletto  -->
 
@@ -135,15 +137,26 @@
                             {{ transformDate(message.date) }}
                         </p>
                     </div>
+                    <div class="none chevron" >
+                        <i class="fas fa-chevron-down" @click="removeMessage(index)"></i>
+                        <ul class="none">
+                            <li>Cancella messaggio</li>
+                        </ul>
+
+                    </div>
 
                     
 
                 </div>
+            
+                
                 <!-- resetta il primo messaggio  -->
                 <div style="display: none;">
                     {{firstMessage = 0}}
                 </div>
-
+                
+            </div>
+            <div class="dialog" v-else>
             </div>
             <footer>
                 <div class="settings">

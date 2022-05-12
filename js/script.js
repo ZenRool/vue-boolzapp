@@ -175,6 +175,19 @@ const app = new Vue({
                         status: 'received'
                     }
                 ],
+            },
+            {
+                name: 'Tizio senza messaggi',
+                avatar: '_8',
+                visible: true,
+                messages: [
+                    // {
+                    //     date: '10/01/2020 15:30:55',
+                    //     message: 'Ciao, andiamo a mangiare la pizza stasera?',
+                    //     status: 'received'
+                    // },
+
+                ],
             }
         ],
         // oggetto 'contact' del utente 
@@ -188,7 +201,8 @@ const app = new Vue({
         actIndex: 0,
         search: "",
         inputMessage: "",
-        firstMessage: 0
+        firstMessage: 0,
+        intUno: 1
         
         
     }),
@@ -268,6 +282,10 @@ const app = new Vue({
                     ,1000);
             }
 
+        },
+        removeMessage(index) {
+            
+            this.contacts[this.actIndex].messages.splice(index, 1);
         }  
 
 

@@ -10,6 +10,9 @@
     display: table;
     content: "";
 }
+.none {
+    display: none;
+}
 html {
     font-family: 'Lato', sans-serif;;
 }
@@ -70,7 +73,7 @@ body {
     margin-right: 1rem;
 
 }
-.settings i {
+.settings i, .chevron i {
     color: #b1b1b1;
     font-size: 1.2rem;
     cursor: pointer;
@@ -162,23 +165,16 @@ body {
     margin: 2px 0;
     width: auto;
     max-width: 65%;
-    
-
     position: relative;
-    /* display: flex; */
-
     
-
 }
 .sent {
     background-color: #d5f9ba;
-    
     align-self: flex-end;
 
 }
 .received {
     background-color: white;
-    
     align-self: flex-start;
 }
 .sent.first-m { 
@@ -186,6 +182,18 @@ body {
 }
 .received.first-m {
     border-top-left-radius: 0;
+}
+.chevron {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    height: 1.7rem;
+    width: 1.7rem;
+    background-color: inherit;
+}
+/* Hover del messaggio fa apparire il chevron  */
+.balloon:hover .chevron{
+    display: block;
 }
 /* angoletto nel messaggio  */
 .received.first-m::after {
@@ -212,15 +220,9 @@ body {
     border-color: #d5f9ba transparent transparent transparent ;
     
 }
-.balloon .message {
-    /* margin-right: 3rem; */
-    /* float: left; */
-    /* width: 80%; */
+/* .balloon .message {
     height: 100%;
-
-    
-
-}
+} */
 .balloon .date-last {
     margin-left: 3rem;
     float: right;
@@ -257,7 +259,7 @@ footer .settings {
 }
 .smiles .none{
     position: absolute;
-    display: none;
+    
     width: 200px;
     height: 80px;
     border-radius: 10px;
