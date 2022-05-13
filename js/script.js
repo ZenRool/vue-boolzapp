@@ -205,7 +205,7 @@ const app = new Vue({
         
 
         delMessage: -1,
-        firstClick: 0
+       
 
         
         
@@ -294,30 +294,20 @@ const app = new Vue({
         },
         // Funzine che attiva il menu a tendina 
         activeMenu(index) {
-            // event.capture= true;
-            // event.stopPropagation();
-            
-            // this.delMessage = index;
 
             
-            // setTimeout(() =>{console.log(index,"a");}, 200);
-            
-            
             this.delMessage = index;
-            // this.dontUndo = event;
-            // console.log(this.dontUndo === event);
-            // event.cancelable;
-            // console.log(event);
-            
-            
+
 
 
         },
 
         removeMessage(index) {
-            this.contacts[this.actIndex].messages.splice(index, 1);
             this.delMessage = -1;
-            this.firstClick = 0;
+            
+            this.contacts[this.actIndex].messages.splice(index, 1);
+           
+            
 
         },
         resetDel() {
